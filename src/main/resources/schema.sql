@@ -1,73 +1,71 @@
-
---1
-CREATE DATABASE cine_db;
-
---2
+CREATE DATABASE IF NOT EXISTS cine_db;
 USE cine_db;
 
+-- Tabla actor
+CREATE TABLE actor (
+    id BIGINT PRIMARY KEY,
+    biography VARCHAR(255),
+    birth_date DATE,
+    name VARCHAR(255),
+    nationality VARCHAR(255),
+    photo_url VARCHAR(255)
+);
 
---3
+-- Tabla director
+CREATE TABLE director (
+    id BIGINT PRIMARY KEY,
+    biography VARCHAR(255),
+    birth_date DATE,
+    name VARCHAR(255),
+    nationality VARCHAR(255),
+    photo_url VARCHAR(255)
+);
+
+-- Tabla movie
 CREATE TABLE movie (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(255),
+    id BIGINT PRIMARY KEY,
     description VARCHAR(1000),
     duration INT,
-    rating VARCHAR(255),
-    subtitled BOOLEAN,
-    release_date DATE,
     image_url VARCHAR(255),
-    trailer_url VARCHAR(255),
+    rating VARCHAR(255),
+    release_date DATE,
+    score DOUBLE,
     status VARCHAR(255),
-    score DOUBLE
+    subtitled BIT,
+    title VARCHAR(255),
+    trailer_url VARCHAR(255)
 );
 
-CREATE TABLE movie_genres (
-    movie_id BIGINT NOT NULL,
-    genre VARCHAR(255),
-    FOREIGN KEY (movie_id) REFERENCES movie(id) ON DELETE CASCADE
+-- Tabla movie_actors (relación N:N entre movie y actor)
+CREATE TABLE movie_actors (
+    movies_id BIGINT,
+    actors_id BIGINT,
+    PRIMARY KEY (movies_id, actors_id),
+    FOREIGN KEY (movies_id) REFERENCES movie(id),
+    FOREIGN KEY (actors_id) REFERENCES actor(id)
 );
 
-
-CREATE TABLE movie_formats (
-    movie_id BIGINT NOT NULL,
-    format VARCHAR(255),
-    FOREIGN KEY (movie_id) REFERENCES movie(id) ON DELETE CASCADE
-);
-
-
-CREATE TABLE director (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255),
-    birth_date DATE,
-    nationality VARCHAR(255),
-    biography TEXT,
-    photo_url VARCHAR(255)
-);
-
-
-CREATE TABLE actor (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255),
-    birth_date DATE,
-    nationality VARCHAR(255),
-    biography TEXT,
-    photo_url VARCHAR(255)
-);
-
-
+-- Tabla movie_directors (relación N:N entre movie y director)
 CREATE TABLE movie_directors (
-    movie_id BIGINT NOT NULL,
-    directors_id BIGINT NOT NULL,
-    PRIMARY KEY (movie_id, directors_id),
-    FOREIGN KEY (movie_id) REFERENCES movie(id) ON DELETE CASCADE,
+    directed_movies_id BIGINT,
+    directors_id BIGINT,
+    PRIMARY KEY (directed_movies_id, directors_id),
+    FOREIGN KEY (directed_movies_id) REFERENCES movie(id),
     FOREIGN KEY (directors_id) REFERENCES director(id)
 );
 
+-- Tabla movie_formats
+CREATE TABLE movie_formats (
+    movie_id BIGINT,
+    format VARCHAR(255),
+    PRIMARY KEY (movie_id, format),
+    FOREIGN KEY (movie_id) REFERENCES movie(id)
+);
 
-CREATE TABLE movie_actors (
-    movie_id BIGINT NOT NULL,
-    actors_id BIGINT NOT NULL,
-    PRIMARY KEY (movie_id, actors_id),
-    FOREIGN KEY (movie_id) REFERENCES movie(id) ON DELETE CASCADE,
-    FOREIGN KEY (actors_id) REFERENCES actor(id)
+-- Tabla movie_genres
+CREATE TABLE movie_genres (
+    movie_id BIGINT,
+    genre VARCHAR(255),
+    PRIMARY KEY (movie_id, genre),
+    FOREIGN KEY (movie_id) REFERENCES movie(id)
 );

@@ -1,18 +1,20 @@
+> Para ver esta documentación en español, visita [README.es.md](README.es.md)
+
 # 🎬 Cine API - Spring Boot RESTful Service
 
-Una API REST para gestionar películas, directores y actores. Hecho con **Spring Boot**, **JPA/Hibernate**, y **MySQL**.
+A REST API to manage movies, directors, and actors. Built with Spring Boot, JPA/Hibernate, and MySQL.
 
-## 📦 Características
+## 📦 Features
 
-- CRUD de películas, directores y actores
-- Asociación de películas con actores y directores
-- Soporte para géneros y formatos
-- Validaciones con Jakarta Bean Validation
-- CORS habilitado para cualquier origen
-- Documentación con Swagger (opcional)
-- Base de datos inicializable con `schema.sql` y `data.sql`
+CRUD operations for movies, directors, and actors
 
-## 🚀 Tecnologías
+- Association of movies with actors and directors
+- Support for genres and formats
+- Validation with Jakarta Bean Validation
+- CORS enabled for any origin
+- Documentation with Swagger (optional)
+- Database can be initialized with schema.sql and data.sql
+## 🚀 Technologies
 
 - Java 21
 - Spring Boot
@@ -24,7 +26,7 @@ Una API REST para gestionar películas, directores y actores. Hecho con **Spring
 - Validation
 - Maven
 
-## 🏗️ Estructura del proyecto
+## 🏗️ Project Structure
 ```
 src/
 ├── controller/
@@ -35,27 +37,27 @@ src/
 └── config/
 ```
 
-## 🛠️ Configuración
+## 🛠️ Configuration
 
-Antes de correr la aplicacion renombra el archivo application.properties.example por application.properties:
+Before running the application, you must rename the file application.properties.example to application.properties and fill in your actual database credentials:
+
 ```bash
 src/main/resources/application.properties.example ➜ application.properties
 ```
 
-Asegúrate de tener una base de datos MySQL corriendo y configurar `application.properties`:
-
+Make sure you have a MySQL database running and configure your application.properties:
 ```properties
 spring.datasource.url=jdbc:mysql://localhost:3306/cine
-spring.datasource.username=tu_usuario
-spring.datasource.password=tu_clave
+spring.datasource.username=your_username
+spring.datasource.password=your_password
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 spring.jpa.hibernate.ddl-auto=update
 ```
-⚠️ Importante: No dejes tus credenciales reales en el archivo de ejemplo. Mantén application.properties fuera del control de versiones usando .gitignore.
+⚠️ Important: Do not leave your real credentials in the example file. Keep application.properties out of version control by using .gitignore.
 
-## 📸 Ejemplos
+## 📸 Examples
 
-### Crear una película (POST `/api/movie`)
+### Create a Movie (POST /api/movie)
 
 ```json
 {
@@ -76,8 +78,8 @@ spring.jpa.hibernate.ddl-auto=update
 }
 ```
 
-## ✅ Cómo subir a GitHub
-- Inicializa git:
+## ✅ How to Upload to GitHub
+- Initialize git:
 
 ```bash
 git init
@@ -85,10 +87,9 @@ git add .
 git commit -m "Initial commit"
 ```
 
-- Crea un repositorio en GitHub
+- Create a repository on GitHub
 
-
-- Añade el remoto:
+- Add the remote:
 
 ```bash
 git remote add origin https://github.com/tu-usuario/tu-repo.git
@@ -97,7 +98,7 @@ git push -u origin main
 
 ## ✅ CORS y Seguridad
 
-Toda la seguridad ha sido deshabilitada para facilitar pruebas públicas:
+All security has been disabled to allow public testing:
 
 ```
 http.csrf().disable().authorizeHttpRequests().anyRequest().permitAll();
@@ -108,8 +109,11 @@ http.csrf().disable().authorizeHttpRequests().anyRequest().permitAll();
 ```
 
 ## 📌 Documentación de la API
-Puedes acceder al enlace
-para ver la documentacion generada por Swagger una vez inicializado el proyecto.
+You can access the Swagger-generated documentation once the project is running at:
 ```
 http://localhost:8080/swagger-ui/index.html
 ```
+
+## 🪪 License
+
+This project is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) license.
