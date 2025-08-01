@@ -1,20 +1,20 @@
-> Para ver esta documentación en español, visita [README.es.md](README.es.md)
+> To view this documentation in Spanish, visit README.es.md
 
 # 🎬 Cine API - Spring Boot RESTful Service
 
-A REST API to manage movies, directors, and actors. Built with Spring Boot, JPA/Hibernate, and MySQL.
+Una API REST para gestionar películas, directores y actores. Hecho con **Spring Boot**, **JPA/Hibernate**, y **MySQL**.
 
-## 📦 Features
+## 📦 Características
 
-CRUD operations for movies, directors, and actors
+- CRUD de películas, directores y actores
+- Asociación de películas con actores y directores
+- Soporte para géneros y formatos
+- Validaciones con Jakarta Bean Validation
+- CORS habilitado para cualquier origen
+- Documentación con Swagger (opcional)
+- Base de datos inicializable con `schema.sql` y `data.sql`
 
-- Association of movies with actors and directors
-- Support for genres and formats
-- Validation with Jakarta Bean Validation
-- CORS enabled for any origin
-- Documentation with Swagger (optional)
-- Database can be initialized with schema.sql and data.sql
-## 🚀 Technologies
+## 🚀 Tecnologías
 
 - Java 21
 - Spring Boot
@@ -26,7 +26,7 @@ CRUD operations for movies, directors, and actors
 - Validation
 - Maven
 
-## 🏗️ Project Structure
+## 🏗️ Estructura del proyecto
 ```
 src/
 ├── controller/
@@ -37,27 +37,27 @@ src/
 └── config/
 ```
 
-## 🛠️ Configuration
+## 🛠️ Configuración
 
-Before running the application, you must rename the file application.properties.example to application.properties and fill in your actual database credentials:
-
+Antes de correr la aplicacion renombra el archivo application.properties.example por application.properties:
 ```bash
 src/main/resources/application.properties.example ➜ application.properties
 ```
 
-Make sure you have a MySQL database running and configure your application.properties:
+Asegúrate de tener una base de datos MySQL corriendo y configurar `application.properties`:
+
 ```properties
 spring.datasource.url=jdbc:mysql://localhost:3306/cine
-spring.datasource.username=your_username
-spring.datasource.password=your_password
+spring.datasource.username=tu_usuario
+spring.datasource.password=tu_clave
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 spring.jpa.hibernate.ddl-auto=update
 ```
-⚠️ Important: Do not leave your real credentials in the example file. Keep application.properties out of version control by using .gitignore.
+⚠️ Importante: No dejes tus credenciales reales en el archivo de ejemplo. Mantén application.properties fuera del control de versiones usando .gitignore.
 
-## 📸 Examples
+## 📸 Ejemplos
 
-### Create a Movie (POST /api/movie)
+### Crear una película (POST `/api/movie`)
 
 ```json
 {
@@ -78,8 +78,8 @@ spring.jpa.hibernate.ddl-auto=update
 }
 ```
 
-## ✅ How to Upload to GitHub
-- Initialize git:
+## ✅ Cómo subir a GitHub
+- Inicializa git:
 
 ```bash
 git init
@@ -87,9 +87,10 @@ git add .
 git commit -m "Initial commit"
 ```
 
-- Create a repository on GitHub
+- Crea un repositorio en GitHub
 
-- Add the remote:
+
+- Añade el remoto:
 
 ```bash
 git remote add origin https://github.com/tu-usuario/tu-repo.git
@@ -98,7 +99,7 @@ git push -u origin main
 
 ## ✅ CORS y Seguridad
 
-All security has been disabled to allow public testing:
+Toda la seguridad ha sido deshabilitada para facilitar pruebas públicas:
 
 ```
 http.csrf().disable().authorizeHttpRequests().anyRequest().permitAll();
@@ -109,11 +110,12 @@ http.csrf().disable().authorizeHttpRequests().anyRequest().permitAll();
 ```
 
 ## 📌 Documentación de la API
-You can access the Swagger-generated documentation once the project is running at:
+Puedes acceder al enlace
+para ver la documentacion generada por Swagger una vez inicializado el proyecto.
 ```
 http://localhost:8080/swagger-ui/index.html
 ```
 
-## 🪪 License
+## 🪪 Licencia
 
-This project is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) license.
+Este proyecto está licenciado bajo la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) license.

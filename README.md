@@ -1,6 +1,8 @@
+> Para ver esta documentación en español, visita [README.es.md](README.es.md)
+
 # 🎬 Cine API - Spring Boot RESTful Service
 
-Una API REST para gestionar películas, directores y actores. Hecho con **Spring Boot**, **JPA/Hibernate**, y **MySQL**.
+A REST API to manage movies, directors, and actors. Built with Spring Boot, JPA/Hibernate, and MySQL.
 
 ## 📦 Features
 
@@ -111,3 +113,7 @@ You can access the Swagger-generated documentation once the project is running a
 ```
 http://localhost:8080/swagger-ui/index.html
 ```
+
+## 🪪 License
+
+This project is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) license.
