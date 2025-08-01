@@ -47,12 +47,19 @@ src/main/resources/application.properties.example ➜ application.properties
 Asegúrate de tener una base de datos MySQL corriendo y configurar `application.properties`:
 
 ```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/cine
-spring.datasource.username=tu_usuario
-spring.datasource.password=tu_clave
+spring.datasource.url=jdbc:mysql://localhost:3306/cine_db?useSSL=false&serverTimezone=UTC&createDatabaseIfNotExist=true
+spring.datasource.username=your-username
+spring.datasource.password=your-password
+spring.jpa.hibernate.ddl-auto=create-drop
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-spring.jpa.hibernate.ddl-auto=update
 ```
+
+## 🔐 Reemplaza "your-username" y "your-password" con tus credenciales reales de MySQL
+spring.datasource.username=your-username
+spring.datasource.password=your-password
+
+✅ Recomendación: Cámbia "create-drop" por update o none para no perder los datos.
+
 ⚠️ Importante: No dejes tus credenciales reales en el archivo de ejemplo. Mantén application.properties fuera del control de versiones usando .gitignore.
 
 ## 📸 Ejemplos
@@ -72,9 +79,7 @@ spring.jpa.hibernate.ddl-auto=update
   "status": "Released",
   "score": 8.8,
   "genres": ["Sci-Fi", "Thriller"],
-  "formats": ["IMAX", "Digital"],
-  "directorIds": [1],
-  "actorIds": [1, 2]
+  "formats": ["IMAX", "Digital"]
 }
 ```
 
